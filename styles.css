@@ -1,0 +1,199 @@
+div.validation-error {
+    color: red;
+}
+
+body{
+    /* background-color: #04c582; */
+    background-color: #fff;
+}
+
+input.form-control,input.form-control:focus{
+    /* background-color: #636b7b;
+    color: #fff;
+    border: 1px solid #636b7b; */
+    /* background-color: #a6b4bb; */
+    background-color: #fafafb;
+    color: #152e83;
+    border: 1px solid #9daac4;
+
+}
+.forgot-password{
+    color: white;
+    font-size: 12px;
+}
+.forgot-password:hover{
+    color: #dadada;
+}
+.div-center{
+    text-align: center;
+}
+.jumbotron{
+    /* background: linear-gradient(#94d8d5, #18665c); */
+    /* background: linear-gradient(#214963, #c0cfeb); */
+    /* background: linear-gradient(#491a5f, #d3b0f0); */
+    background: linear-gradient(#435f9c, #97adf0);
+    /* background: #435f9c; */
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 0;
+    border-radius: 0%;
+}
+.text-danger{
+    color: rgb(255, 0, 0) !important;
+    font-weight: bolder !important;
+
+}
+
+input.form-control:focus{
+    box-shadow: none;
+}
+
+button[type=button].btn{
+    border-radius: 10px;
+    /* background-color: #04c582; */
+    /* background-color: #176280; */
+    /* background-color: #d1a84e; */
+    background-color: rgb(162, 181, 202);
+    color: #fff;
+}
+button[type=button].btn:enabled{
+    border-radius: 10px;
+    /* background-color: #04c582; */
+    /* background-color: #176280; */
+    /* background-color: #d1a84e; */
+    background-color: rgb(92, 123, 141);
+    color: #fff;
+}
+button[type=button].btn:hover:enabled{
+    background-color: #dfc786;
+}
+
+button[type=submit].btn{
+    border-radius: 20px;
+    /* background-color: #04c582; */
+    /* background-color: #176280; */
+    /* background-color: #d1a84e; */
+    background-color: rgb(109, 131, 114);
+    color: #fff;
+}
+button[type=submit].btn:enabled{
+    border-radius: 20px;
+    /* background-color: #04c582; */
+    /* background-color: #176280; */
+    /* background-color: #d1a84e; */
+    background-color: rgb(96, 196, 119);
+    color: #fff;
+}
+button[type=submit].btn:hover:enabled{
+    background-color: #eca511;
+}
+.form-label{
+    color: #939bb4 !important;
+    text-transform: none !important;
+    font-size: 0.9rem;
+}
+.text-header{
+    color: #939bb4;
+    text-shadow: 1px 1px#907c91;
+}
+div.form-group label:not(.text-danger){
+    /* color: #545d6a; */
+    /* color: #b7f1d1; */
+    color: #fafafb;
+    font-weight: 700;
+}
+th:hover, td:hover{
+    cursor: pointer;
+}
+td{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+div.form-group.required>label:first-child:after{
+    content:'*';
+    color: #fff;
+    padding-left: 5px;
+}
+
+#toast-container > div {
+    opacity:1;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .wrapped-div {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    /* background: #2e3137; */
+    /* background: #558374; */
+    /* background: linear-gradient(#94d8d5, #256d63, #94d8d5); */
+    background: #435f9c;
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    padding: 0px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  }
+
+  /* Tabs */
+.tab-header{
+    text-align: center;
+}
+
+  .tab-header h2.active {
+    color: #fff;
+    border-bottom: 2px solid #fff;
+  }
+
+  .tab-header h2 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    display:inline-block;
+    padding: 30px 40px 10px 40px;
+    cursor: pointer;
+    /* color: #9daac4; */
+    color: #c3cee2;
+    /* color: #545d6a; */
+    border-bottom: 2px solid #9daac4;
+  }
+
+  .tab-header h2:focus {
+      outline: none;
+  }
+  .logout-btn{
+    background-color: rgb(83, 165, 233);
+    color: #fff;
+  }
+  .logout-btn:hover{
+    background-color: #eca511;
+    color: #fff;
+  }
+  form.crud-form{
+      border-radius: 4% !important;
+      padding: 10px;
+  }
+  .bg-dark{
+    background: rgb(106, 113, 136) !important;
+  }
+  form{
+      margin: 0px 16px;
+  }
+
+ div.form-group input.invalid{
+    border: 1px solid #dc3545 !important; 
+ }
+ 
+ div.form-group label:first-child{
+    text-transform: uppercase;
+    font-size: 0.9rem;
+ }
