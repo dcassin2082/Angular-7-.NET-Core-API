@@ -1,8 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json.Serialization;
+using System;
+using System.Text;
 using WebApi.Models;
+using WebApi.Services;
 
 namespace WebApi
 {
@@ -35,13 +30,7 @@ namespace WebApi
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-                //.AddJsonOptions(options =>
-                //{
-                //    var resolver = options.SerializerSettings.ContractResolver;
-                //    if (resolver != null)
-                //        (resolver as DefaultContractResolver).NamingStrategy = null;
-                //});
-
+               
             services.AddDbContext<AuthenticationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
 
             services.AddDbContext<EmployeeDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EFConn")));
@@ -51,7 +40,6 @@ namespace WebApi
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AuthenticationContext>();
 
-            // add this in order to bypass built-in identity validation rules (password
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = false;
@@ -84,9 +72,12 @@ namespace WebApi
                     ClockSkew = TimeSpan.Zero
                 };
             });
+            services.AddTransient<IEmployeeService, EmployeeService>();
+            services.AddTransient<ICompanyService, CompanyService>();
+            services.AddTransient<IContactService, ContactService>();
+            services.AddTransient<ICustomerService, CustomerService>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             // add this for http errors
@@ -104,12 +95,9 @@ namespace WebApi
                 app.UseDeveloperExceptionPage();
             }
 
-            // ADD THIS *************************
             app.UseAuthentication();
 
-            // add cors
             app.UseCors(builder => builder.WithOrigins(Configuration["ApplicationSettings:ClientURL"].ToString()).AllowAnyHeader().AllowAnyMethod());
-
 
             app.UseMvc();
         }
