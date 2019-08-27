@@ -1,0 +1,39 @@
+<form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off" class="crud-form">
+  <input type="hidden" name="employeeID" #employeeID="ngModel" [(ngModel)]="employeeService.employee.employeeID">
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <label class="form-label">Employee Name:</label>
+      <input name="fullName" #fullName="ngModel" [(ngModel)]="employeeService.employee.fullName" placeholder="Employee Name"required class="form-control">
+      <div class="validation-error" *ngIf="fullName.invalid && fullName.touched">Required</div>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Position:</label>
+        <input name="position" #position="ngModel" [(ngModel)]="employeeService.employee.position" placeholder="Employee Name"required class="form-control">
+        <div class="validation-error" *ngIf="position.invalid && position.touched">Required</div>
+      </div>
+  </div>
+  <div class="row mb-2">
+      <div class="col-md-6">
+        <label class="form-label">EMP Code:</label>
+        <input name="empCode" #empCode="ngModel" [(ngModel)]="employeeService.employee.empCode" placeholder="EMP Code"required class="form-control">
+        <div class="validation-error" *ngIf="empCode.invalid && empCode.touched">Required</div>
+      </div>
+      <div class="col-md-6">
+          <label class="form-label">Mobile:</label>
+          <input name="mobile" #mobile="ngModel" [(ngModel)]="employeeService.employee.mobile" placeholder="Mobile"required class="form-control">
+          <div class="validation-error" *ngIf="mobile.invalid && mobile.touched">Required</div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 pb-2">
+        <button class="btn btn-block" type="submit" [disabled]="!form.valid">
+          <i class="fa fa-save"> Submit</i>
+        </button>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-block" type="button" (click)="resetForm(form)">
+          <i class="fa fa-repeat"> Reset</i>
+        </button>
+      </div>
+    </div>
+</form>

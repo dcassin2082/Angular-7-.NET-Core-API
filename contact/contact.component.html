@@ -1,0 +1,43 @@
+<form class="crud-form" name="form" #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+  <input type="hidden" name="contactID" #contactID="ngModel" [(ngModel)]="contactService.contact.contactID">
+  <div class="form-row mb-2">
+    <div class="col">
+      <label class="form-label">First Name:</label>
+      <input name="firstName" #firstName="ngModel" required [(ngModel)]="contactService.contact.firstName"
+        placeholder="Company Name" class="form-control">
+      <div class="validation-error" *ngIf="firstName.touched && firstName.invalid">Required</div>
+    </div>
+    <div class="col">
+      <label class="form-label">Last Name:</label>
+      <input name="lastName" #lastName="ngModel" required [(ngModel)]="contactService.contact.lastName"
+        placeholder="Last Name" class="form-control">
+      <div class="validation-error" *ngIf="lastName.touched && lastName.invalid">Required</div>
+    </div>
+  </div>
+  <div class="form-row mb-2">
+    <div class="col-md-8">
+      <label class="form-label">Email:</label>
+      <input name="emailAddress" #emailAddress="ngModel" required [(ngModel)]="contactService.contact.emailAddress"
+        placeholder="Email Address" class="form-control">
+      <div class="validation-error" *ngIf="emailAddress.touched && emailAddress.invalid">Required</div>
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Phone:</label>
+      <input name="phone" #phone="ngModel" required [(ngModel)]="contactService.contact.phone" placeholder="Phone"
+        class="form-control">
+      <div class="validation-error" *ngIf="phone.touched && phone.invalid">Required</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 pb-2">
+      <button class="btn btn-block" type="submit" [disabled]="!form.valid">
+        <i class="fa fa-save"> Submit</i>
+      </button>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-block" (click)="resetForm(form)" type="button">
+        <i class="fa fa-repeat"> Reset</i>
+      </button>
+    </div>
+  </div>
+</form>

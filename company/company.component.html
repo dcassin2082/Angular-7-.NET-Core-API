@@ -1,0 +1,59 @@
+<form class="crud-form" name="form" #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+  <input type="hidden" name="companyId" #companyId="ngModel" [(ngModel)]="companyService.company.companyId">
+  <div class="form-row mb-2">
+    <div class="col">
+      <label class="form-label">Company Name:</label>
+      <input name="companyName" #companyName="ngModel" required [(ngModel)]="companyService.company.companyName"
+        placeholder="Company Name" class="form-control">
+    </div>
+
+  </div>
+
+  <div class="form-row mb-2">
+    <div class="col-md-6">
+      <label class="form-label">Organization Number:</label>
+      <input name="organizationNumber" #organizationNumber="ngModel"
+        [(ngModel)]="companyService.company.organizationNumber" placeholder="Organization Number" class="form-control">
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Region:</label>
+      <input name="region" #region="ngModel" [(ngModel)]="companyService.company.region" placeholder="Region"
+        class="form-control">
+    </div>
+  </div>
+  <div class="form-row mb-2">
+    <div class="col">
+      <label class="form-label">Address:</label>
+      <input name="address1" #address1="ngModel" [(ngModel)]="companyService.company.address1" placeholder="Address"
+        class="form-control">
+    </div>
+  </div>
+  <div class="form-row mb-2">
+    <div class="col-md-6">
+      <label class="form-label">City:</label>
+      <input name="city" #city="ngModel" [(ngModel)]="companyService.company.city" placeholder="City"
+        class="form-control">
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">State:</label>
+      <input name="state" #state="ngModel" [(ngModel)]="companyService.company.state" placeholder="State"
+        class="form-control">
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">Zip:</label>
+      <input name="zip" #zip="ngModel" [(ngModel)]="companyService.company.zip" placeholder="Zip" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 pb-2">
+      <button class="btn btn-block" type="submit" [disabled]="!form.valid">
+        <i class="fa fa-save"> Submit</i>
+      </button>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-block" (click)="resetForm(form)" type="button">
+        <i class="fa fa-repeat"> Reset</i>
+      </button>
+    </div>
+  </div>
+</form>

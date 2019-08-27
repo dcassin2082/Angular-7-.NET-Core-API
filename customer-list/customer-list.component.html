@@ -1,0 +1,45 @@
+<div class="row mb-2">
+    <div class="col-md-8 pb-2">
+      <input placeholder="search..." name="search" #search="ngModel" [(ngModel)]="filter" class="form-control">
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-block" type="button" (click)="clearSearch()" [disabled]="!filter">
+        <i class="fa fa-repeat"> Clear</i>
+      </button>
+    </div>
+  </div>
+  <table class="table table-bordered table-striped table-condensed table-hover">
+    <thead>
+      <tr>
+        <th class="text-muted" (click)="sort('firstName')">
+          Name
+          <span *ngIf="key=='firstName'">
+            <i class="fa fa-sort"></i>
+          </span>
+        </th>
+        <th class="text-muted" (click)="sort('emailAddress')">
+          Email
+          <span *ngIf="key=='emailAddress'">
+            <i class="fa fa-sort"></i>
+          </span>
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let customer of customerService.customers | orderBy: key: reverse | filter: filter | paginate:{itemsPerPage: 5, currentPage: p}">
+        <td (click)="populateForm(customer)">
+          {{customer.firstName}} {{customer.lastName}}
+        </td>
+        <td (click)="populateForm(customer)">
+          {{customer.city}}, {{customer.state}} {{customer.zip}}
+        </td>
+        <td (click)="onDelete(customer.customerID)">
+          <i class="fa fa-trash-o text-warning"></i> 
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p=$event" maxSize="5" boundaryLinks="true" directionLinks="true" previousLabel="Prev"
+    nextLabel="Next"></pagination-controls>
